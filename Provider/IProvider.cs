@@ -8,7 +8,6 @@ namespace AuthService.Provider
 {
     public interface IProvider
     {
-        public User GetUser(User userCred);
         public string Login(User userCred);
     }
 }
