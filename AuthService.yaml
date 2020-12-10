@@ -1,0 +1,33 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: authservice-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: AuthService
+  template:
+    metadata:
+      labels:
+        app: AuthService
+    spec:
+      containers:
+      - name: authservicerepos
+        image:truyumcr.azurecr.io/authservicerepos:latest
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+      - name: dsconfigsn
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: authservice
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: AuthService
