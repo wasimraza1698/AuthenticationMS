@@ -14,11 +14,11 @@ spec:
     spec:
       containers:
       - name: authservicerepos
-        image:truyumcr.azurecr.io/authservicerepos:latest
+        image:medicinesupplycr.azurecr.io/authservicerepos:latest
         ports:
         - containerPort: 8080
       imagePullSecrets:
-      - name: dsconfigsn
+      - name: pmsmsecret
 
 ---
 apiVersion: v1
