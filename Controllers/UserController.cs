@@ -24,31 +24,7 @@ namespace AuthService.Controllers
         {
             _userProvider = userProvider;
         }
-        [HttpPost]
-        public IActionResult GetUser(User userCred)
-        {
-            _log.Info("Credentials of user : '"+userCred.UserName+"' Received");
-            try
-            {
-                User user = _userProvider.GetUser(userCred);
-                if (user != null)
-                {
-                    _log.Info("User : '"+user.UserName+"' having ID : '"+user.UserID.ToString()+"' found and returned");
-                    return new OkObjectResult(user);
-                }
-                else
-                {
-                    _log.Info("User : '"+userCred.UserName+"' not found");
-                    return NotFound();
-                }
-            }
-            catch (Exception e)
-            {
-                _log.Error("Error inside Controller while getting User details. - "+e.Message);
-                return StatusCode(500);
-            }
-        }
-
+        
         [HttpPost]
         public IActionResult Login(User userCred)
         {
