@@ -22,20 +22,6 @@ namespace AuthService.Provider
             _userRepo = useRepo;
             _config = config;
         }
-        public User GetUser(User userCred)
-        {
-            User user;
-            try
-            {
-                user = _userRepo.GetUser(userCred);
-                return user;
-            }
-            catch (Exception e)
-            {
-                _log.Error("Error in Provider while getting User Details - "+e.Message);
-                throw;
-            }
-        }
 
         public string Login(User userCred)
         {
