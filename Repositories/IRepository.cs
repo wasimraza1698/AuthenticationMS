@@ -8,6 +8,6 @@ namespace AuthService.Repositories
 {
     public interface IRepository
     {
-        public User GetUser(User user);
+        public UserDto GetUser(User user);
     }
 }

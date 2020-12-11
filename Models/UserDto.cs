@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AuthService.Models
 {
-    public class User : UserDto
+    public class UserDto
     {
         public int UserID { get; set; }
         public string UserName { get; set; }

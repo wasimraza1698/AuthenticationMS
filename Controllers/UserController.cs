@@ -40,7 +40,7 @@ namespace AuthService.Controllers
                 else
                 {
                     _log.Info("User : '" + userCred.UserName + "' not found");
-                    return NotFound();
+                    return NotFound("invalid username/password");
                 }
             }
             catch (Exception e)

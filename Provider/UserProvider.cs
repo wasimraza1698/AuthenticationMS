@@ -25,20 +25,18 @@ namespace AuthService.Provider
 
         public string Login(User userCred)
         {
-            User user;
+            User user = new User();
+            UserDto userDto = new UserDto();
             try
             {
-                user = _userRepo.GetUser(userCred);
-                string token;
-                if (user != null)
+                userDto = _userRepo.GetUser(userCred);
+                string token=null;
+                if (userDto!=null)
                 {
+                    user.UserName = userDto.UserName;
                     token = GenerateJWT();
-                    return token;
                 }
-                else
-                {
-                    return null;
-                }
+                return token;
             }
             catch (Exception e)
             {
