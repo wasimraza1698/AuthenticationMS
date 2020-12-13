@@ -18,7 +18,7 @@ namespace AuthService.Controllers
     [Route("[Controller]/[Action]")]
     public class UserController : ControllerBase
     {
-        private static readonly log4net.ILog _log = log4net.LogManager.GetLogger(typeof(UserController));
+        private readonly log4net.ILog _log = log4net.LogManager.GetLogger(typeof(UserController));
         private readonly IProvider _userProvider;
         public UserController(IProvider userProvider)
         {
@@ -35,7 +35,7 @@ namespace AuthService.Controllers
                 if (token != null)
                 {
                     _log.Info("User : '"+userCred.UserName+"' is valid and token returned");
-                    return Ok(new {token = token});
+                    return Ok(new { token });
                 }
                 else
                 {

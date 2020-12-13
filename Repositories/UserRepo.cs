@@ -9,7 +9,7 @@ namespace AuthService.Repositories
     public class UserRepo : IRepository
     {
         private readonly log4net.ILog _log = log4net.LogManager.GetLogger(typeof(UserRepo));
-        private static List<UserDto> users = new List<UserDto>()
+        private static readonly List<UserDto> Users = new List<UserDto>()
         {
             new UserDto(){UserID = 1,UserName = "John",Password = "john@123"},
             new UserDto(){UserID = 2,UserName = "Bucky",Password = "bucky@123"}
@@ -19,7 +19,7 @@ namespace AuthService.Repositories
             UserDto userDto = new UserDto();
             try
             {
-                userDto =  users.SingleOrDefault(u => u.UserName == user.UserName && u.Password == user.Password);
+                userDto =  Users.SingleOrDefault(u => u.UserName == user.UserName && u.Password == user.Password);
                 return userDto;
             }
             catch (Exception e)

@@ -26,7 +26,7 @@ namespace AuthService.Provider
         public string Login(User userCred)
         {
             User user = new User();
-            UserDto userDto = new UserDto();
+            UserDto userDto;
             try
             {
                 userDto = _userRepo.GetUser(userCred);
