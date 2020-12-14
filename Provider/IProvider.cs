@@ -9,5 +9,7 @@ namespace AuthService.Provider
     public interface IProvider
     {
         public string Login(User userCred);
+        public string GenerateJWT(User userCred);
+
     }
 }

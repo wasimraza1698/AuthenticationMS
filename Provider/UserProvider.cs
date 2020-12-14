@@ -31,10 +31,10 @@ namespace AuthService.Provider
             {
                 userDto = _userRepo.GetUser(userCred);
                 string token=null;
-                if (userDto!=null)
+                if(userDto!=null)
                 {
                     user.UserName = userDto.UserName;
-                    token = GenerateJWT();
+                    token = GenerateJWT(userCred);
                 }
                 return token;
             }
@@ -45,19 +45,27 @@ namespace AuthService.Provider
             }
         }
 
-        public string GenerateJWT()
+        public string GenerateJWT(User userCred)
         {
             try
             {
-                var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
-                var credentials = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256);
-                var token = new JwtSecurityToken(
-                    _config["Jwt:Issuer"],
-                    _config["Jwt:Issuer"],
-                    null,
-                    expires: DateTime.Now.AddMinutes(30),
-                    signingCredentials: credentials);
-                return new JwtSecurityTokenHandler().WriteToken(token);
+                UserDto user = _userRepo.GetUser(userCred);
+                if (user != null)
+                {
+                    var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
+                    var credentials = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256);
+                    var token = new JwtSecurityToken(
+                        _config["Jwt:Issuer"],
+                        _config["Jwt:Issuer"],
+                        null,
+                        expires: DateTime.Now.AddMinutes(30),
+                        signingCredentials: credentials);
+                    return new JwtSecurityTokenHandler().WriteToken(token);
+                }
+                else
+                {
+                    return null;
+                }
             }
             catch (Exception e)
             {

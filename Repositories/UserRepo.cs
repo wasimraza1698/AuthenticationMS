@@ -16,10 +16,9 @@ namespace AuthService.Repositories
         };
         public UserDto GetUser(User user)
         {
-            UserDto userDto = new UserDto();
             try
             {
-                userDto =  Users.SingleOrDefault(u => u.UserName == user.UserName && u.Password == user.Password);
+                UserDto  userDto =  Users.SingleOrDefault(u => u.UserName == user.UserName && u.Password == user.Password);
                 return userDto;
             }
             catch (Exception e)
