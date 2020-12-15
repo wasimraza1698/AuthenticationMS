@@ -12,12 +12,12 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace AuthService.Provider
 {
-    public class UserProvider : IProvider
+    public class UserProvider : IUserProvider
     {
         private static readonly log4net.ILog _log = log4net.LogManager.GetLogger(typeof(UserProvider));
         private readonly IConfiguration _config;
-        private readonly IRepository _userRepo;
-        public UserProvider(IRepository useRepo,IConfiguration config)
+        private readonly IUserRepository _userRepo;
+        public UserProvider(IUserRepository useRepo,IConfiguration config)
         {
             _userRepo = useRepo;
             _config = config;

@@ -6,7 +6,7 @@ using AuthService.Models;
 
 namespace AuthService.Provider
 {
-    public interface IProvider
+    public interface IUserProvider
     {
         public string Login(User userCred);
         public string GenerateJWT(User userCred);

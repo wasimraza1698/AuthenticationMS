@@ -19,8 +19,8 @@ namespace AuthService.Controllers
     public class UserController : ControllerBase
     {
         private readonly log4net.ILog _log = log4net.LogManager.GetLogger(typeof(UserController));
-        private readonly IProvider _userProvider;
-        public UserController(IProvider userProvider)
+        private readonly IUserProvider _userProvider;
+        public UserController(IUserProvider userProvider)
         {
             _userProvider = userProvider;
         }

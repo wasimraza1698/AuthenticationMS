@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace AuthService.Repositories
 {
-    public class UserRepo : IRepository
+    public class UserRepository : IUserRepository
     {
-        private readonly log4net.ILog _log = log4net.LogManager.GetLogger(typeof(UserRepo));
+        private readonly log4net.ILog _log = log4net.LogManager.GetLogger(typeof(UserRepository));
         private static readonly List<UserDto> Users = new List<UserDto>()
         {
             new UserDto(){UserID = 1,UserName = "John",Password = "john@123"},

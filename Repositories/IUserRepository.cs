@@ -6,7 +6,7 @@ using AuthService.Models;
 
 namespace AuthService.Repositories
 {
-    public interface IRepository
+    public interface IUserRepository
     {
         public UserDto GetUser(User user);
     }
